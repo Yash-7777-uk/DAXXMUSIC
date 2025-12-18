@@ -5,6 +5,8 @@ from functools import wraps
 from pyrogram.errors.exceptions.forbidden_403 import ChatWriteForbidden
 from DAXXMUSIC import app
 from DAXXMUSIC.logging import LOGGER
+from config import LOGGER_ID
+
 
 
 def split_limits(text):
@@ -50,7 +52,7 @@ def capture_err(func):
                 ),
             )
             for x in error_feedback:
-                await app.send_message(LOGGER, x)
+                await app.send_message(LOGGER_ID, x)
             raise err
 
     return capture
